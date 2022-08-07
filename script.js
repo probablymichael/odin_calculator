@@ -1,17 +1,29 @@
+function resetData(){
+    let firstNumber = display.textContent;
+    let operation = '';
+    let secondNumber = '';
+    let praxis;
+    let operatorIndex;
+}
+
 function add(a, b){
     display.textContent = +a + +b;
+    resetData()
 }
 
 function subtract(a, b){
     display.textContent = +a - +b;
+    resetData()
 }
 
 function multiply(a, b){
     display.textContent = +a * +b;
+    resetData()
 }
 
 function divide(a, b){
     display.textContent = +a / +b;
+    resetData()
 }
 
 /* DECLARATIONS */
@@ -47,6 +59,13 @@ operators.forEach(operators => {
         display.textContent += event.target.value
         
         operation = event.target.value
+        /* WANT TO CHECK IF OPERATION HAS ALREADY SOMETHING, AND IF IT DOES NOT WORK */
+        
+        // if (operation !== ''){
+        //     operators.addEventListener('click', (event) => {
+        //     display.textContent += event.target.value
+            
+        // })}
     })
 })
 

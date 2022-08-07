@@ -1,25 +1,25 @@
 function add(a, b){
-    return a + b;
+    display.textContent = +a + +b;
 }
 
 function subtract(a, b){
-    return a - b;
+    display.textContent = +a - +b;
 }
 
 function multiply(a, b){
-    return a * b;
+    display.textContent = +a * +b;
 }
 
 function divide(a, b){
-    return a / b;
+    display.textContent = +a / +b;
 }
-
 
 /* DECLARATIONS */
 const display = document.querySelector('.displayed')
 
 const num_btns = document.querySelectorAll('.num-btn')
 const operators = document.querySelectorAll('.operator')
+const equals = document.querySelector('.btn-equals')
 
 /* STORE NUMBERS */
 let firstNumber = '';
@@ -48,4 +48,20 @@ operators.forEach(operators => {
         
         operation = event.target.value
     })
+})
+
+function operate(operator, num1, num2){
+    if (operator == '+'){
+        add(num1, num2)
+    } else if (operation == '-'){
+        subtract(num1, num2)
+    } else if (operation == '×'){
+        multiply(num1, num2)
+    } else if (operation == '÷'){
+        divide(num1, num2)
+    }
+}
+
+equals.addEventListener('click', () => {
+    operate(operation, firstNumber, secondNumber)
 })

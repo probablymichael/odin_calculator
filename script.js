@@ -1,9 +1,11 @@
+/* FUNCTIONS NEEDED */
+
 function resetData(){
-    let firstNumber = display.textContent;
-    let operation = '';
-    let secondNumber = '';
-    let praxis;
-    let operatorIndex;
+    firstNumber = display.textContent;
+    operation = '';
+    secondNumber = '';
+    praxis;
+    operatorIndex;
 }
 
 function add(a, b){
@@ -56,16 +58,10 @@ num_btns.forEach(num_btns => {
 /* Add functionality to the operator buttons */
 operators.forEach(operators => {
     operators.addEventListener('click', (event) => {
-        display.textContent += event.target.value
-        
-        operation = event.target.value
-        /* WANT TO CHECK IF OPERATION HAS ALREADY SOMETHING, AND IF IT DOES NOT WORK */
-        
-        // if (operation !== ''){
-        //     operators.addEventListener('click', (event) => {
-        //     display.textContent += event.target.value
-            
-        // })}
+        if (operation == ''){
+            display.textContent += event.target.value
+            operation = event.target.value
+        }
     })
 })
 

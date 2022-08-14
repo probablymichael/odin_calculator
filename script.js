@@ -1,31 +1,37 @@
 /* FUNCTIONS NEEDED */
 
 function resetDataAfterCalculation(){
-    firstNumber = display.textContent;
-    operation = '';
+    display.textContent = firstNumber;
+    operation = secondOperator;
+    secondOperator = '';
     secondNumber = '';
-    praxis;
-    operatorIndex;
 }
 
 function add(a, b){
-    display.textContent = +a + +b;
+    firstNumber = +a + +b;
     resetDataAfterCalculation()
 }
 
 function subtract(a, b){
-    display.textContent = +a - +b;
+    firstNumber = +a - +b;
     resetDataAfterCalculation()
 }
 
 function multiply(a, b){
-    display.textContent = +a * +b;
+    firstNumber = +a * +b;
     resetDataAfterCalculation()
 }
 
 function divide(a, b){
-    display.textContent = +a / +b;
-    resetDataAfterCalculation()
+    if (b == '0'){
+        display.textContent = 'Error: cannot divide with zero'
+        firstNumber = '';
+        operation = '';
+        secondNumber = '';
+    } else {
+        firstNumber = Math.round((+a / +b) * 100 ) / 100;
+        resetDataAfterCalculation()
+    }
 }
 
 /* DECLARATIONS */
@@ -40,33 +46,34 @@ const backspace = document.querySelector('.backspace')
 /* STORE NUMBERS */
 let firstNumber = '';
 let operation = '';
+let secondOperator = '';
 let secondNumber = '';
-let praxis;
-let operatorIndex;
 
-/* Add functionality to buttons and store the numbers */
+
 num_btns.forEach(num_btns => {
     num_btns.addEventListener('click', (event) => {
-        display.textContent += event.target.value
-
-        praxis = display.textContent
-        praxis.split('')
-        operatorIndex = praxis.indexOf(operation)
-        firstNumber = praxis.slice(0, operatorIndex)
-        secondNumber = praxis.slice(operatorIndex + 1, praxis.length)
+        if (operation == ''){
+            firstNumber += event.target.value
+            display.textContent = firstNumber
+        } else if (operation != ''){
+            secondNumber += event.target.value
+            display.textContent = secondNumber
+        }
     })
 })
 
-/* Add functionality to the operator buttons */
 operators.forEach(operators => {
     operators.addEventListener('click', (event) => {
-		if (operation == ''){
-			display.textContent += event.target.value
-        
-			operation = event.target.value
-		}
+        if (operation == ''){
+            operation = event.target.value
+        } else{
+            secondOperator = event.target.value
+            operate(operation, firstNumber, secondNumber)
+        }
     })
 })
+
+
 
 /* OPERATE FUNCTION */
 function operate(operator, num1, num2){
@@ -74,15 +81,20 @@ function operate(operator, num1, num2){
         add(num1, num2)
     } else if (operation == '-'){
         subtract(num1, num2)
-    } else if (operation == 'ร—'){
+    } else if (operation == '×'){
         multiply(num1, num2)
-    } else if (operation == 'รท'){
+    } else if (operation == '÷'){
         divide(num1, num2)
     }
 }
 
 equals.addEventListener('click', () => {
-    operate(operation, firstNumber, secondNumber)
+    if (firstNumber == '' || operation == '' || secondNumber == ''){
+        return;
+    } else {
+        operate(operation, firstNumber, secondNumber)
+    }
+
 })
 
 /* CLEAR BUTTON */
@@ -91,17 +103,23 @@ clear.addEventListener('click', () => {
     firstNumber = '';
     operation = '';
     secondNumber = '';
-    praxis;
-    operatorIndex;
 })
 
 /* BACKSPACE */
 backspace.addEventListener('click', () => {
-    praxis = praxis.split('')
-    let praxisPop = praxis.pop()// praxis = praxis.slice(praxis.length - 1, praxis.length + 1)
-    if (operation !== ''){
-        operation = '';
+    if (secondNumber != ''){
+        secondNumber = secondNumber.split('')
+        let secondNumberPop = secondNumber.splice(secondNumber.length - 1, secondNumber.length)
+        secondNumber = secondNumber.join('')
+        display.textContent = secondNumber
+    } else if (secondNumber == ''){
+        display.textContent = firstNumber
+        operation = ''
+        if (firstNumber != ''){
+            firstNumber = firstNumber.split('')
+            let firstNumberPop = firstNumber.splice(firstNumber.length - 1, firstNumber.length)
+            firstNumber = firstNumber.join('')
+            display.textContent = firstNumber
+        }
     }
-    praxis = praxis.join('')
-    display.textContent = praxis
 })

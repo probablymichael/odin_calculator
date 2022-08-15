@@ -12,8 +12,11 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100%;
+
     background-color: #E9E9EB;
+    font-family: 'Spline Sans', sans-serif;
 }
+
 /* HEADER & TITLE */
 #header{
     width: 100%;
@@ -25,11 +28,15 @@ body {
 }
 
 .project-title{
-    font-family: 'Spline Sans', sans-serif;
     font-size: 4rem;
-    color: #42506B
+
+    text-shadow: 2px 4px 4px #778899;
 }
 
+.project-title a{
+    text-decoration: none;
+    color: #42506B;
+}
 /* CALC CONTAINER */
 #calc-area{
     display: flex;
@@ -76,13 +83,12 @@ body {
     gap: 1rem;
     justify-content: flex-end;
     align-items: flex-end;
-    
 }
 
 .displayed{
     font-size: 2rem;
 
-    margin-right: 5px;
+    margin-right: 1rem;
 }
 
 /* CLEAR BUTTON */
@@ -108,6 +114,12 @@ body {
     font-size: 20px;
 
     box-shadow: 0 2px 4px 0 #778899, 0 3px 16px 0 #778899;
+
+    transition: 0.07s ease-in;
+}
+
+.clear-btn:active{
+    background-color: #ee3a3a;
 }
 
 .backspace{
@@ -121,6 +133,12 @@ body {
     font-size: 20px;
 
     box-shadow: 0 2px 4px 0 #778899, 0 3px 16px 0 #778899;
+
+    transition: 0.07s ease-in;
+}
+
+.backspace:active{
+    background-color: rgb(91, 139, 218);
 }
 
 /* BUTTONS */
@@ -146,12 +164,16 @@ body {
     border: 1px solid #42506B;
     border-radius: 10px;
     box-shadow: 0 1px 2px 0 #778899, 0 1.5px 5px 0 #778899;
+
+    transition: 0.07s ease-in;
+}
+
+.btns button:active{
+    background-color: #42506B;
 }
 
 /* footer */
 #footer{
-    font-family: 'Spline Sans', sans-serif;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -167,5 +189,11 @@ body {
 
 #footer a{
     text-decoration: none;
-    color: #E9E9EB
+    color: #E9E9EB;
+
+    transition: 0.7s ease-in-out;
+}
+
+#footer a:hover{
+    color: #EF4B4C;
 }

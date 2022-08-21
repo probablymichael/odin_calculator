@@ -69,7 +69,7 @@ body {
 }
 
 .display{
-    margin: 1rem 0 1rem 0;
+    margin: 16px 0 16px 0;
 
     height: 125px;
     width: 375px;
@@ -80,7 +80,7 @@ body {
 
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 16px;
     justify-content: flex-end;
     align-items: flex-end;
 }
@@ -88,7 +88,7 @@ body {
 .displayed{
     font-size: 2rem;
 
-    margin-right: 1rem;
+    margin-right: 16px;
 }
 
 /* CLEAR BUTTON */
@@ -100,7 +100,7 @@ body {
     width: 396px;
     height: 50px;
 
-    margin-bottom: 1rem;
+    margin-bottom: 16px;
 }
 
 .clear-btn{
@@ -111,7 +111,7 @@ body {
     border: 1px solid #42506B;
     border-radius: 10px;
 
-    font-size: 20px;
+    font-size: 1.25rem;
 
     box-shadow: 0 2px 4px 0 #778899, 0 3px 16px 0 #778899;
 
@@ -130,7 +130,7 @@ body {
     border: 1px solid #42506B;
     border-radius: 10px;
 
-    font-size: 20px;
+    font-size: 1.25rem;
 
     box-shadow: 0 2px 4px 0 #778899, 0 3px 16px 0 #778899;
 
@@ -144,7 +144,7 @@ body {
 /* BUTTONS */
 .btn-cont{
     height: 300px;
-    gap: 1rem;
+    gap: 16px;
 }
 
 .btns{

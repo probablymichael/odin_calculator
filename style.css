@@ -31,12 +31,20 @@ body {
     font-size: 4rem;
 
     text-shadow: 2px 4px 4px #778899;
+
+    transition: 0.05s ease-in-out;
+}
+
+.project-title:hover{
+    text-shadow: 4px 8px 8px #677685;
+    transform: translateY(-5px)
 }
 
 .project-title a{
     text-decoration: none;
     color: #42506B;
 }
+
 /* CALC CONTAINER */
 #calc-area{
     display: flex;
@@ -120,6 +128,7 @@ body {
 
 .clear-btn:active{
     background-color: #ee3a3a;
+    transform: translateY(4px)
 }
 
 .backspace{
@@ -139,6 +148,7 @@ body {
 
 .backspace:active{
     background-color: rgb(91, 139, 218);
+    transform: translateY(4px)
 }
 
 /* BUTTONS */
@@ -170,6 +180,7 @@ body {
 
 .btns button:active{
     background-color: #42506B;
+    transform: translateY(4px)
 }
 
 /* footer */
@@ -195,5 +206,5 @@ body {
 }
 
 #footer a:hover{
-    color: #EF4B4C;
+    text-shadow: 2px 4px 4px #24282c;
 }

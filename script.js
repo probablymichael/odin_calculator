@@ -139,6 +139,8 @@ clear.addEventListener('click', () => {
     firstNumber = '';
     operation = '';
     secondNumber = '';
+    decimalUsageFirstNumber = false;
+    decimalUsageSecondNumber = false;
 })
 
 /* BACKSPACE */

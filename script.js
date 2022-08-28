@@ -1,10 +1,27 @@
 /* FUNCTIONS NEEDED */
 
+function findDecimal(array, value) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === value){
+            decimalUsageFirstNumber = true;
+            return;
+        } else {
+             decimalUsageFirstNumber = false;
+        }
+    }}
+
+
 function resetDataAfterCalculation(){
     display.textContent = firstNumber;
+
+    firstNumber = firstNumber.split('')
+    findDecimal(firstNumber, '.')
+    firstNumber = firstNumber.join('')
+
     operation = secondOperator;
     secondOperator = '';
     secondNumber = '';
+    decimalUsageSecondNumber = false;
 }
 
 function add(a, b){
@@ -14,7 +31,7 @@ function add(a, b){
 }
 
 function subtract(a, b){
-    firstNumber = +a - +b;
+    firstNumber = Math.round((+a - +b) * 100 ) / 100;
     firstNumber = firstNumber.toString();
     resetDataAfterCalculation()
 }
@@ -46,12 +63,15 @@ const operators = document.querySelectorAll('.operator')
 const equals = document.querySelector('.btn-equals')
 const clear = document.querySelector('.clear-btn')
 const backspace = document.querySelector('.backspace')
+const decimal = document.querySelector('.btn-dot')
 
 /* STORE NUMBERS */
 let firstNumber = '';
 let operation = '';
 let secondOperator = '';
 let secondNumber = '';
+let decimalUsageFirstNumber = false;
+let decimalUsageSecondNumber = false;
 
 
 num_btns.forEach(num_btns => {
@@ -77,7 +97,19 @@ operators.forEach(operators => {
     })
 })
 
-
+decimal.addEventListener('click', (e) => {
+    if (firstNumber === ''){
+        return;
+    } else if (firstNumber !== '' && operation === '' && decimalUsageFirstNumber == false){
+        firstNumber += e.target.value
+        display.textContent = firstNumber
+        decimalUsageFirstNumber = true;
+    } else if (operation !== '' && decimalUsageSecondNumber == false){
+        secondNumber += e.target.value
+        display.textContent = secondNumber
+        decimalUsageSecondNumber == true;
+    }
+})
 
 /* OPERATE FUNCTION */
 function operate(operator, num1, num2){

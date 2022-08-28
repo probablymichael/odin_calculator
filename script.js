@@ -9,16 +9,19 @@ function resetDataAfterCalculation(){
 
 function add(a, b){
     firstNumber = +a + +b;
+    firstNumber = firstNumber.toString();
     resetDataAfterCalculation()
 }
 
 function subtract(a, b){
     firstNumber = +a - +b;
+    firstNumber = firstNumber.toString();
     resetDataAfterCalculation()
 }
 
 function multiply(a, b){
     firstNumber = +a * +b;
+    firstNumber = firstNumber.toString();
     resetDataAfterCalculation()
 }
 
@@ -30,6 +33,7 @@ function divide(a, b){
         secondNumber = '';
     } else {
         firstNumber = Math.round((+a / +b) * 100 ) / 100;
+        firstNumber = firstNumber.toString();
         resetDataAfterCalculation()
     }
 }
@@ -81,9 +85,9 @@ function operate(operator, num1, num2){
         add(num1, num2)
     } else if (operation == '-'){
         subtract(num1, num2)
-    } else if (operation == '×'){
+    } else if (operation == 'ร—'){
         multiply(num1, num2)
-    } else if (operation == '÷'){
+    } else if (operation == 'รท'){
         divide(num1, num2)
     }
 }

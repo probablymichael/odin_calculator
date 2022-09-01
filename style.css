@@ -102,13 +102,15 @@ body {
 /* CLEAR BUTTON */
 .extra-btn-cont{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    gap: 16px;
 
     width: 396px;
     height: 50px;
 
     margin-bottom: 16px;
+    padding: 0 8px;
 }
 
 .clear-btn{
@@ -151,6 +153,26 @@ body {
     transform: translateY(4px)
 }
 
+.integer{
+    width: 75px;
+    height: 40px;
+
+    border: 1px solid #42506B;
+    border-radius: 10px;
+
+    font-size: 1.25rem;
+
+    box-shadow: 0 2px 4px 0 #778899, 0 3px 16px 0 #778899;
+
+    transition: 0.07s ease-in;
+}
+
+.integer:active{
+    background-color: #42506B;
+    color: rgb(255, 255, 255);
+    transform: translateY(4px)
+}
+
 /* BUTTONS */
 .btn-cont{
     height: 300px;
@@ -180,6 +202,7 @@ body {
 
 .btns button:active{
     background-color: #42506B;
+    color: rgb(255, 255, 255);
     transform: translateY(4px)
 }
 

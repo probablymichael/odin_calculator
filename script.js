@@ -1,5 +1,4 @@
 /* FUNCTIONS NEEDED */
-
 function findDecimal(array, value) {
     for (let i = 0; i < array.length; i++) {
         if (array[i] === value){
@@ -10,17 +9,41 @@ function findDecimal(array, value) {
         }
     }}
 
+function checkIfInteger(array, value) {
+    if (array[0] === value){
+        return true;
+    } else if (array[0] !== value){
+        return false;
+    }
+}
+
+function clearButtonFunctionalities() {
+    display.textContent = ''
+    firstNumber = '';
+    operation = '';
+    secondNumber = '';
+    decimalUsageFirstNumber = false;
+    decimalUsageSecondNumber = false;
+    positiveFirstNumber = true;
+    positiveSecondNumber = true;
+}
 
 function resetDataAfterCalculation(){
     display.textContent = firstNumber;
 
     firstNumber = firstNumber.split('')
     findDecimal(firstNumber, '.')
+    if (checkIfInteger(firstNumber, '-') == true){
+        positiveFirstNumber = false;
+    } else if (checkIfInteger(firstNumber, '-') == false){
+        positiveFirstNumber = true;
+    }
     firstNumber = firstNumber.join('')
 
     operation = secondOperator;
     secondOperator = '';
     secondNumber = '';
+    positiveSecondNumber = true;
     decimalUsageSecondNumber = false;
 }
 
@@ -44,10 +67,8 @@ function multiply(a, b){
 
 function divide(a, b){
     if (b == '0'){
+        clearButtonFunctionalities()
         display.textContent = 'Error: cannot divide with zero'
-        firstNumber = '';
-        operation = '';
-        secondNumber = '';
     } else {
         firstNumber = Math.round((+a / +b) * 100 ) / 100;
         firstNumber = firstNumber.toString();
@@ -64,6 +85,7 @@ const equals = document.querySelector('.btn-equals')
 const clear = document.querySelector('.clear-btn')
 const backspace = document.querySelector('.backspace')
 const decimal = document.querySelector('.btn-dot')
+const integer = document.querySelector('.integer')
 
 /* STORE NUMBERS */
 let firstNumber = '';
@@ -72,6 +94,10 @@ let secondOperator = '';
 let secondNumber = '';
 let decimalUsageFirstNumber = false;
 let decimalUsageSecondNumber = false;
+let positiveFirstNumber = true;
+let positiveSecondNumber = true;
+let negation;
+let affirmation;
 
 
 num_btns.forEach(num_btns => {
@@ -117,9 +143,9 @@ function operate(operator, num1, num2){
         add(num1, num2)
     } else if (operation == '-'){
         subtract(num1, num2)
-    } else if (operation == '×'){
+    } else if (operation == 'ร—'){
         multiply(num1, num2)
-    } else if (operation == '÷'){
+    } else if (operation == 'รท'){
         divide(num1, num2)
     }
 }
@@ -134,14 +160,7 @@ equals.addEventListener('click', () => {
 })
 
 /* CLEAR BUTTON */
-clear.addEventListener('click', () => {
-    display.textContent = ''
-    firstNumber = '';
-    operation = '';
-    secondNumber = '';
-    decimalUsageFirstNumber = false;
-    decimalUsageSecondNumber = false;
-})
+clear.addEventListener('click', () => {clearButtonFunctionalities()})
 
 /* BACKSPACE */
 backspace.addEventListener('click', () => {
@@ -159,5 +178,36 @@ backspace.addEventListener('click', () => {
             firstNumber = firstNumber.join('')
             display.textContent = firstNumber
         }
+    }
+})
+
+/* INTEGERS */
+integer.addEventListener('click', () => {
+    if (operation === '' && positiveFirstNumber == true){
+        firstNumber = firstNumber.split('')
+        negation = firstNumber.unshift('-')
+        firstNumber = firstNumber.toString()
+        display.textContent = firstNumber
+        positiveFirstNumber = false;
+    } else if (operation === '' && positiveFirstNumber == false){
+        firstNumber = firstNumber.split('')
+        firstNumber[0] = ''
+        firstNumber = firstNumber.join('')
+        display.textContent = firstNumber
+        positiveFirstNumber = true;
+    }
+
+    if (operation !== '' && positiveSecondNumber == true){
+        secondNumber = secondNumber.split('')
+        negation = secondNumber.unshift('-')
+        secondNumber = secondNumber.toString('')
+        display.textContent = secondNumber
+        positiveSecondNumber = false;
+    } else if (operation === '' && positiveSecondNumber == false){
+        secondNumber = secondNumber.split('')
+        secondNumber[0] = ''
+        secondNumber = secondNumber.join('')
+        display.textContent = secondNumber
+        positiveSecondNumber = true;
     }
 })

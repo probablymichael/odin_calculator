@@ -97,15 +97,13 @@ let decimalUsageSecondNumber = false;
 let positiveFirstNumber = true;
 let positiveSecondNumber = true;
 let negation;
-let affirmation;
-
 
 num_btns.forEach(num_btns => {
     num_btns.addEventListener('click', (event) => {
-        if (operation == ''){
+        if (operation === ''){
             firstNumber += event.target.value
             display.textContent = firstNumber
-        } else if (operation != ''){
+        } else if (operation !== ''){
             secondNumber += event.target.value
             display.textContent = secondNumber
         }
@@ -114,9 +112,13 @@ num_btns.forEach(num_btns => {
 
 operators.forEach(operators => {
     operators.addEventListener('click', (event) => {
-        if (operation == ''){
+        if (firstNumber === '-' || firstNumber === ''){
+            return;
+        } else if (operation === ''){
             operation = event.target.value
-        } else{
+        } else if (secondNumber === '-' || secondNumber === ''){
+            return;
+        } else {
             secondOperator = event.target.value
             operate(operation, firstNumber, secondNumber)
         }
@@ -186,7 +188,7 @@ integer.addEventListener('click', () => {
     if (operation === '' && positiveFirstNumber == true){
         firstNumber = firstNumber.split('')
         negation = firstNumber.unshift('-')
-        firstNumber = firstNumber.toString()
+        firstNumber = firstNumber.join('').toString()
         display.textContent = firstNumber
         positiveFirstNumber = false;
     } else if (operation === '' && positiveFirstNumber == false){
@@ -200,7 +202,7 @@ integer.addEventListener('click', () => {
     if (operation !== '' && positiveSecondNumber == true){
         secondNumber = secondNumber.split('')
         negation = secondNumber.unshift('-')
-        secondNumber = secondNumber.toString('')
+        secondNumber = secondNumber.join('').toString()
         display.textContent = secondNumber
         positiveSecondNumber = false;
     } else if (operation === '' && positiveSecondNumber == false){

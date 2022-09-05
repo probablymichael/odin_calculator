@@ -145,9 +145,9 @@ function operate(operator, num1, num2){
         add(num1, num2)
     } else if (operation == '-'){
         subtract(num1, num2)
-    } else if (operation == 'ร—'){
+    } else if (operation == '×'){
         multiply(num1, num2)
-    } else if (operation == 'รท'){
+    } else if (operation == '÷'){
         divide(num1, num2)
     }
 }

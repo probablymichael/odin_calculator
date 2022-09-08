@@ -1,6 +1,8 @@
 # Calculator (The Odin Project)
 
 <div align='center'><a href='https://probablymichael.github.io/odin_calculator'><b>INTEGER FUNCTIONALITY - SITE HERE</b></a></div>
+<br>
+- :exclamation: Bug Fix 8/9/22: Footer doesn't go over calculator anymore
 
 :computer: This project was also part of the JavaScript Basics, which is in the foundations.
 
